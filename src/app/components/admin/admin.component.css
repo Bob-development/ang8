@@ -1,0 +1,26 @@
+.adminPanel{
+    display: flex;
+    justify-content: space-around;
+}
+
+.signUp-wrapper{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signUp{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 300px;
+}
+
+.addProduct{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}

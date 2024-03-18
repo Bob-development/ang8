@@ -1,0 +1,7 @@
+<div class="pizzas-wrapper">
+    <div *ngFor="let pizza of productsService.getPizzas()" class="pizza">
+        <div class="img-wrapper">IMG</div>
+        <div class="title">{{pizza.title}}</div>
+        <div class="description">{{pizza.description}}</div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="adminPanel">
+    <div class="signUp-wrapper">
+        <form class="signUp">
+            <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="emailMatcher"
+                       placeholder="Ex. pat@example.com">
+                @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+                  <mat-error>Please enter a valid email address</mat-error>
+                }
+                @if (emailFormControl.hasError('required')) {
+                  <mat-error>Email is <strong>required</strong></mat-error>
+                }
+            </mat-form-field>
+        
+            <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input type="text" matInput [formControl]="passFormControl" [errorStateMatcher]="passMatcher"
+                       placeholder="Ex. aA123asd">
+                <mat-error *ngIf="passMatcher">Your password is invalid !</mat-error>
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Role</mat-label>
+                <mat-select [formControl]="role">
+                  @for (role of usersService.getUsersRole(); track role) {
+                    <mat-option [value]="role.value">{{role.viewValue}}</mat-option>
+                  }
+                </mat-select>
+            </mat-form-field>
+            
+            <button (click)="signUp()" mat-raised-button color="accent">Add new User</button>
+        </form>
+    </div>
+
+    <div class="addProduct">
+        <form #form="ngForm" class="addProduct">
+            <mat-form-field class="example-full-width">
+                <mat-label>Title</mat-label>
+                <input name="title" ngModel matInput placeholder="Title">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Description</mat-label>
+                <input name="description" ngModel matInput placeholder="Description">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Category</mat-label>
+                <mat-select name="category" ngModel>
+                  @for (category of productsService.getProductsCategory(); track category) {
+                    <mat-option [value]="category.value">{{category.viewValue}}</mat-option>
+                  }
+                </mat-select>
+            </mat-form-field>
+
+            <button (click)="productsService.addProduct(form.value)" mat-raised-button color="accent">Add new Product</button>
+        </form>
+    </div>
+</div>
